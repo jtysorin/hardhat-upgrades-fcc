@@ -6,12 +6,15 @@ require("hardhat-gas-reporter");
 require("hardhat-contract-sizer");
 require("dotenv").config();
 require("@openzeppelin/hardhat-upgrades");
+require("@openzeppelin/hardhat-defender");
 
 const GOERLI_RPC_URL = process.env.GOERLI_RPC_URL;
 const MAINNET_RPC_URL = process.env.MAINNET_RPC_URL;
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
 const COINMARKETCAP_API_KEY = process.env.COINMARKETCAP_API_KEY;
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY;
+const DEFENDER_TEAM_API_KEY = process.env.DEFENDER_TEAM_API_KEY;
+const DEFENDER_TEAM_API_SECRET_KEY = process.env.DEFENDER_TEAM_API_SECRET_KEY;
 
 module.exports = {
     defaultNetwork: "hardhat",
@@ -34,6 +37,10 @@ module.exports = {
             saveDeployments: true,
             gas: 5000000,
         },
+    },
+    defender: {
+        apiKey: DEFENDER_TEAM_API_KEY,
+        apiSecret: DEFENDER_TEAM_API_SECRET_KEY,
     },
     solidity: {
         compilers: [{ version: "0.8.9" }, { version: "0.7.0" }, { version: "0.6.12" }],
